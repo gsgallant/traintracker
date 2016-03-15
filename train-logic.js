@@ -1,17 +1,6 @@
-// Steps to complete:
-/*
-1. Create Firebase link
-2. Create button for adding new trains - then update the html + update the database
-3. Create a way to retrieve trains from the train database.
-4. Create a way to calculate the months worked. Using difference between start and current time. Then use moment.js formatting to set difference in months.
-5. Calculate Total billed
-
-*/
-// 1. Link to Firebase
 
 var trainData = new Firebase("https://ggfirebase.firebaseio.com/");
-// console.log("13");
-// 2. Button for adding trains
+
 $("#addTrainBtn").on("click", function(){
 	// Grabs user input
 	var trainName = $("#trainNameInput").val().trim();
@@ -29,14 +18,7 @@ $("#addTrainBtn").on("click", function(){
 	// Uploads train data to the database
 	trainData.push(newTrain);
 
-	// //Logs everything to console
-	// console.log(newTrain.name);
-	// console.log(newTrain.destination); 
-	// console.log(newTrain,trainFirst)
-	// console.log(newTrain.frequency)
-	// // Alert
-	// // alert("train successfully added");
-
+	
 	// Clears all of the text-boxes
 	$("#trainNameInput").val("");
 	$("#destinationInput").val("");
@@ -60,16 +42,22 @@ $("#addTrainBtn").on("click", function(){
 	var trainFirst = childSnapshot.val().trainFirst;
 	var trainFrequency = childSnapshot.val().frequency;
 	
-	// // train Info
-	// console.log(trainName);
-	// console.log(trainDestination);
-	console.log(trainFirst);
-	// console.log(trainFrequency);
 	
-	getNextTrain(trainFirst,trainFrequency);
+	console.log(trainFirst);
+		
 
-	var nextTrain = "TBT"
-	var minutesAway ="TBT";
+var timeDifference = moment().diff(moment.unix(trainFirst), "minutes");
+console.log(timeDifference);
+
+var minutesAway = trainFrequency - (timeDifference % trainFrequency);
+console.log("minutes away: " + minutesAway);
+
+var nextTrain = moment().add(minutesAway, "minutes").format('HH:mm');
+console.log("Next Train: " + nextTrain);
+
+
+	
+	
 	// Add each train's data into the table 
 	$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + nextTrain + "</td><td>" + minutesAway + "</td></tr>");
 
@@ -80,20 +68,27 @@ setInterval(date,1000);
 
 function date(){
 
-$("#todaydate").html(moment(new Date()).format('LTS'));
+	$("#todaydate").html(moment(new Date()).format('LTS'));
 
 }
 
-function getNextTrain(time,freq){
+// function getNextTrain(time,freq){
 
-//time comes in to this function already converted to UNIX value
-var timeDifference = (moment().format('X')).diff(time,'X');
+// //time comes in to this function already converted to UNIX value
 
-//
-console.log(time);
-console.log(timeDifference);
+// var timeDifference = moment().diff(moment.unix(time), "minutes");
+// console.log(timeDifference);
 
-}
+// var minutesAway = freq - (timeDifference % freq);
+// console.log("minutes away: " + minutesAway);
+
+// var nextTrain = moment().add(minutesAway, "minutes").format('HH:mm');
+// console.log("Next Train: " + nextTrain);
+
+// }
+
+
+
 // // Assumptions
 // 		//var tFrequency = 3; 
 // 		var firstTime = "03:30"; // Time is 3:30 AM
