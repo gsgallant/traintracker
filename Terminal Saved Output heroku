@@ -1,0 +1,82 @@
+Last login: Tue Mar 15 10:46:16 on ttys000
+Greg@nbp-196-253:~$ heroku login
+Enter your Heroku credentials.
+Email: greg.gallant@yahoo.com
+Password (typing will be hidden): 
+Logged in as greg.gallant@yahoo.com
+Greg@nbp-196-253:~$ cd rbc
+-bash: cd: rbc: No such file or directory
+Greg@nbp-196-253:~$ cd desktop/rbc
+Greg@nbp-196-253:~/desktop/rbc$ cd homeworkcompleted
+Greg@nbp-196-253:~/desktop/rbc/homeworkcompleted (master)$ cd week-7-game
+Greg@nbp-196-253:~/desktop/rbc/homeworkcompleted/week-7-game (master)$ git add -A
+Greg@nbp-196-253:~/desktop/rbc/homeworkcompleted/week-7-game (master)$ git commit -m "added DELETE button to each train"
+[master d2b9636] added DELETE button to each train
+ Committer: gsgallant <Greg@nbp-196-253.nbp.ruw.rutgers.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 6 files changed, 237 insertions(+), 145 deletions(-)
+ create mode 100755 composer.json
+ create mode 100755 index.php
+ rewrite train-logic.js (69%)
+ create mode 100644 version without delete/index.html
+ create mode 100644 version without delete/train-logic.js
+Greg@nbp-196-253:~/desktop/rbc/homeworkcompleted/week-7-game (master)$ git push
+Counting objects: 8, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 1.87 KiB | 0 bytes/s, done.
+Total 8 (delta 2), reused 0 (delta 0)
+To https://github.com/gsgallant/week-7-game.git
+   075b26b..d2b9636  master -> master
+Greg@nbp-196-253:~/desktop/rbc/homeworkcompleted/week-7-game (master)$ heroku create
+Creating app... done, stack is cedar-14
+https://quiet-sea-57507.herokuapp.com/ | https://git.heroku.com/quiet-sea-57507.git
+Greg@nbp-196-253:~/desktop/rbc/homeworkcompleted/week-7-game (master)$ git remote -v
+heroku	https://git.heroku.com/quiet-sea-57507.git (fetch)
+heroku	https://git.heroku.com/quiet-sea-57507.git (push)
+origin	https://github.com/gsgallant/week-7-game.git (fetch)
+origin	https://github.com/gsgallant/week-7-game.git (push)
+Greg@nbp-196-253:~/desktop/rbc/homeworkcompleted/week-7-game (master)$ git push heroku master
+Counting objects: 18, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (18/18), 5.64 KiB | 0 bytes/s, done.
+Total 18 (delta 4), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote: 
+remote: -----> PHP app detected
+remote: -----> Bootstrapping...
+remote: -----> Installing platform packages...
+remote:        NOTICE: No runtime required in composer.lock; using PHP ^5.5.17
+remote:        - apache (2.4.18)
+remote:        - nginx (1.8.1)
+remote:        - php (5.6.19)
+remote: -----> Installing dependencies...
+remote:        Composer version 1.0.0-beta1 2016-03-03 15:15:10
+remote: -----> Preparing runtime environment...
+remote:        NOTICE: No Procfile, using 'web: vendor/bin/heroku-php-apache2'.
+remote: -----> Checking for additional extensions to install...
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote: 
+remote: -----> Compressing...
+remote:        Done: 11M
+remote: -----> Launching...
+remote:        Released v3
+remote:        https://quiet-sea-57507.herokuapp.com/ deployed to Heroku
+remote: 
+remote: Verifying deploy... done.
+To https://git.heroku.com/quiet-sea-57507.git
+ * [new branch]      master -> master
+Greg@nbp-196-253:~/desktop/rbc/homeworkcompleted/week-7-game (master)$ 
